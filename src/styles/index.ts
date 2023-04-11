@@ -16,9 +16,11 @@ export const {
       primary: '#5E5ADB',
       lightGray: '#f5f5f5',
       darkGray: '#555c68',
+      red: '#cf0909'
     },
 
     fontSizes: {
+      xl: '40px',
       lg: '28px',
       md: '16px',
       small: '14px',
