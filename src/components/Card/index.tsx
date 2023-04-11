@@ -1,18 +1,28 @@
-
 import Image from 'next/image';
-import { CardStyled, Breed } from './styles';
+import Heart from '../Heart';
+import { CardStyled, Breed, Overlay, Info } from './styles';
 
-const Card = () => {
+const Card = ({ content }) => {
+  const { url, breeds } = content;
+  const { name, origin, life_span, weight } = breeds[0];
+
   return (
-    <CardStyled>
-      <Image src='/1.jpg' alt='' width='324' height='319' />
+    <CardStyled >
+      <Overlay href="/detail" favorited={false}>
+        <Image src={url} alt='cat' width='324' height='319' />
+      </Overlay>
 
-      <Breed>Vira Lata</Breed>
+      <Info>
+        <Breed href="/detail">
+          {name}
+        </Breed>
+        <Heart favorited={true} />
+      </Info>
 
       <footer>
-        <strong>Origin: <span>Brazil</span></strong>
-        <strong>Weight: <span>5kg</span></strong>
-        <strong>Lifespan: <span>20y</span></strong>
+        <strong>Weight: <span>{weight?.imperial}</span></strong>
+        <strong>Lifespan: <span>{life_span}</span></strong>
+        <strong>Origin: <span>{origin}</span></strong>
       </footer>
     </CardStyled>
   );
