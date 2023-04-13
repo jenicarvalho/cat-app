@@ -1,13 +1,25 @@
 import axios from 'axios'
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
 
 import Card from '@/components/Card';
 import Filter from '@/components/Filter';
 import Container from '@/components/Container';
 import Sort from '@/components/Sort';
-import Head from 'next/head';
-import { GetServerSideProps } from 'next';
+import { save } from '@/store/features/cats/slice';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { useEffect } from 'react';
+import { normalizeData } from '@/utils/normalize';
 
 export default function Home({ cats }: any) {
+
+  const { catsList } = useAppSelector(state => state.cats);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const dataNormalized = normalizeData(cats)
+    dispatch(save(dataNormalized))
+  }, [])
 
   return (
     <>
@@ -21,7 +33,7 @@ export default function Home({ cats }: any) {
       </Container>
 
       <Container grid>
-        {cats && cats.map((cat: any) => (
+        {catsList && catsList.map((cat: any) => (
           <Card content={cat} key={cat.id} />
         ))}
       </Container>
@@ -29,14 +41,15 @@ export default function Home({ cats }: any) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const query = `has_breeds=1&order=asc&limit=20&api_key=${process.env.API_KEY}`;
+export const getStaticProps: GetStaticProps = async () => {
+  const query = `has_breeds=1&order=asc&limit=100&api_key=${process.env.API_KEY}`;
   const response = await axios.get(`${process.env.API_URL}${query}`);
 
   return {
     props: {
       cats: response.data
-    }
+    },
+    revalidate: 60 * 30 // 30 minutes,
   }
 }
 
