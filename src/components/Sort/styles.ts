@@ -10,14 +10,15 @@ export const SortStyled = styled('div', {
   label: {
     fontSize: '$small',
     color: '$primary',
-    marginBottom: 5
+    marginBottom: 5,
   },
-
+  
   select: {
     fontSize: '$md',
     borderRadius: 12,
     padding: 1,
     textAlign: 'center',
-    border: '1px solid $primary'
+    border: '1px solid $primary',
+    cursor: 'pointer'
   },  
 });
