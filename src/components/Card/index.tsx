@@ -6,9 +6,10 @@ const Card = ({ content }) => {
   const { url, breeds, id } = content;
   const { name, origin, life_span, weight } = breeds;
 
+
   return (
     <CardStyled>
-      <Overlay href={`/detail/${id}`} favorited={false}>
+      <Overlay href={`/detail/${id}`} favorited={!!content?.favourite}>
         <Image src={url} alt={name} width='330' height='319' />
       </Overlay>
 
@@ -16,7 +17,7 @@ const Card = ({ content }) => {
         <Breed href="/detail">
           {name}
         </Breed>
-        <Heart favorited={true} />
+        <Heart favorited={!!content?.favourite} id={id} />
       </Info>
 
       <footer>

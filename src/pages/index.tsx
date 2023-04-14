@@ -42,7 +42,7 @@ export default function Home({ cats }: any) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const query = `has_breeds=1&order=asc&limit=100&api_key=${process.env.API_KEY}`;
+  const query = `&sub_id=cat-app&has_breeds=1&order=asc&limit=200&api_key=${process.env.API_KEY}`;
   const response = await axios.get(`${process.env.API_URL}${query}`);
 
   return {
