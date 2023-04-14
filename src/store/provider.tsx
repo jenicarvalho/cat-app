@@ -2,11 +2,13 @@
 
 import { Provider } from 'react-redux';
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import catsReducer from './features/cats/slice';
+import cats from './features/list/slice';
+import cat from './features/detail/slice';
 
 const store = configureStore({
   reducer: {
-    cats: catsReducer
+    list: cats,
+    detail: cat
   }
 })
 

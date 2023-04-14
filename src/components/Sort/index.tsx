@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SortStyled } from './styles';
 
-import { sort } from '@/store/features/cats/slice';
+import { sort } from '@/store/features/list/slice';
 import { useAppDispatch } from '@/store/hooks';
 
 const Sort = () => {

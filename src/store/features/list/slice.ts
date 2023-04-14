@@ -4,12 +4,12 @@ import { createSlice, current } from '@reduxjs/toolkit';
 import { addFavoritedToState, catFavorited, sortCats } from './actions';
 
 export interface SortState {
-	catsList: any[] | any,
+	cats: any[] | any,
 	status?: string
 };
 
 const initialState: SortState = {
-	catsList: [],
+	cats: [],
 	status: ''
 };
 
@@ -17,10 +17,10 @@ export const catsSlice = createSlice({
 	name: 'cats',
 	initialState,
 	reducers: {
-		save: (state, action) => { state.catsList = action.payload },
+		save: (state, action) => { state.cats = action.payload },
 		sort: (state, action) => {
-			const array = [...current(state.catsList)]
-			state.catsList = sortCats(array, action.payload)
+			const array = [...current(state.cats)]
+			state.cats = sortCats(array, action.payload)
 		},
 	},
 	extraReducers: (builder) => {
@@ -29,7 +29,7 @@ export const catsSlice = createSlice({
 			});
 			builder.addCase(
 					catFavorited.fulfilled, (state: SortState, action) => {
-						state.catsList = addFavoritedToState(state.catsList, action.payload)
+						state.cats = addFavoritedToState(state.cats, action.payload)
 						state.status = "loaded";
 			});
 			builder.addCase(

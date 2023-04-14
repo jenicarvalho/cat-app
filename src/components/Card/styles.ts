@@ -41,7 +41,6 @@ export const Breed = styled(Link, {
 
 export const Overlay = styled(Link, {
   position: 'relative',
-  borderRadius: 20,
   overflow: 'hidden',
 
   img: {
@@ -56,7 +55,7 @@ export const Overlay = styled(Link, {
           position: 'absolute',
           backgroundColor: 'rgba(33, 33, 33, 0.5)',
           width: '100%',
-          height: '99%',
+          height: '319px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',

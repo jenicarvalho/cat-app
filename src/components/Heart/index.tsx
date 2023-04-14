@@ -1,6 +1,6 @@
 'use client';
 
-import { catFavorited } from '@/store/features/cats/actions';
+import { catFavorited } from '@/store/features/list/actions';
 import { useAppDispatch } from '@/store/hooks';
 import React from 'react';
 
@@ -15,7 +15,7 @@ const Heart = ({ favorited = false, id }: Props) => {
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    dispatch(catFavorited(id))
+    !favorited && dispatch(catFavorited(id))
   }
 
   return (
