@@ -4,13 +4,12 @@ import Container from '@/components/Container';
 import DetailInfo from '@/components/DetailInfo';
 import { GetServerSideProps } from 'next/types';
 import axios from 'axios';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useAppDispatch } from '@/store/hooks';
 import { normalizeData } from '@/utils/normalize';
 import { saveCat } from '@/store/features/detail/slice';
 
 export default function Detail({ cat }: any) {
 
-  const { detail } = useAppSelector(state => state);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -25,7 +24,7 @@ export default function Detail({ cat }: any) {
       </Head>
 
       <Container plain>
-        {cat && <DetailInfo content={detail?.cat} />}
+        <DetailInfo />
       </Container>
     </>
   );
@@ -33,7 +32,8 @@ export default function Detail({ cat }: any) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
-  const response = await axios.get(`${process.env.API_URL}/${context.query.id}?sub_id=cat-app&include_favourite`);
+  // it doesnt not retorn fav :(
+  const response = await axios.get(`${process.env.API_URL}/${context.query.id}?sub_id=cat-app&include_favourite=1`);
 
   return {
     props: {

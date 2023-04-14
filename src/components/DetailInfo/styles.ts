@@ -7,7 +7,9 @@ export const DetailStyled = styled('section', {
     marginBottom: 20,
     fontSize: '$lg',
     color: '$primary',
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    display: 'flex',
+    alignItems: 'center'
   },
 
   p: {

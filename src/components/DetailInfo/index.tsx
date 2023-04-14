@@ -1,10 +1,21 @@
 import React from 'react';
 import Image from 'next/image';
 import { DetailStyled, Traits, Trait, Flex, LinkStyled } from './styles';
+import { useAppSelector } from '@/store/hooks';
+import { useRouter } from 'next/router';
+import Heart from '../Heart';
 
-const DetailInfo = ({ content }) => {
+const DetailInfo = () => {
 
-  const { url, breeds, id } = content;
+  const router = useRouter();
+  const { fav } = router.query;
+
+  const { url, breeds, id } = useAppSelector(state => state.detail.cat);
+
+  if (!breeds) {
+    return
+  }
+
 
   return (
     <DetailStyled>
@@ -13,9 +24,11 @@ const DetailInfo = ({ content }) => {
       </LinkStyled>
       <Flex>
         <Image src={url} alt={breeds.name} width='330' height='319' />
-
         <div>
-          <h2>{breeds.name}</h2>
+          <h2>
+            {breeds.name}
+            <Heart favorited={fav} id={id} />
+          </h2>
           <p>{breeds.description}</p>
 
           <h3>Temperament</h3>
