@@ -52,7 +52,6 @@ const DetailInfo = () => {
           <div>Social Needs: <span>{breeds.social_needs}</span></div>
           <div>Stranger Friendly: <span>{breeds.stranger_friendly}</span></div>
           <div>Vocalisation: <span>{breeds.vocalisation}</span></div>
-          <div>Alternative Names: <span>{breeds.alt_names}</span></div>
         </Trait>
         <Trait>
           <div>Know more here in <span> <a href={breeds.wikipedia_url} target="_blank">wikipedia</a> </span></div>

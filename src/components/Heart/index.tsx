@@ -1,7 +1,7 @@
 'use client';
 
 import { favCat } from '@/store/features/detail/slice';
-import { addCatFavorited, removeCatFavorited } from '@/store/features/list/actions';
+import { addCatFavorited, removeCatFavorited } from '@/store/features/list/thunks';
 import { useAppDispatch } from '@/store/hooks';
 import { useRouter } from 'next/router';
 import React from 'react';

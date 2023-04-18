@@ -13,7 +13,7 @@ import { normalizeData } from '@/utils/normalize';
 
 export default function Home({ cats }: any) {
 
-  const catsList = useAppSelector(state => state.list.cats);
+  const { cats: catsList, catsFiltered } = useAppSelector(state => state.list);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -33,9 +33,11 @@ export default function Home({ cats }: any) {
       </Container>
 
       <Container grid>
-        {catsList && catsList.map((cat: any) => (
-          <Card content={cat} key={cat.id} />
-        ))}
+
+        {catsFiltered.length > 0 ?
+          catsFiltered.map((cat: any) => <Card content={cat} key={cat.id} />) :
+          catsList && catsList.map((cat: any) => <Card content={cat} key={cat.id} />)
+        }
       </Container>
     </>
   )

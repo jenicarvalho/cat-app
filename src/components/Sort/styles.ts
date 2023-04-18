@@ -2,7 +2,7 @@ import { styled } from "@/styles";
 
 export const SortStyled = styled('div', {
   borderLeft: '1px solid $lightGray',
-  paddingLeft: 50,
+  paddingLeft: 30,
 
   display: 'flex',
   flexDirection: 'column',

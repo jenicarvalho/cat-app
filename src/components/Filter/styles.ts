@@ -2,8 +2,8 @@ import { styled } from "@/styles";
 
 export const FilterStyled = styled('div', {
   display: 'flex',
-  gap: 60,
-  marginRight: 50,
+  gap: 15,
+  marginRight: 30,
 
   button: {
     backgroundColor: '$primary',
@@ -37,11 +37,8 @@ export const Item = styled('div', {
     borderRadius: 12,
     padding: 1,
     textAlign: 'center',
-    border: '1px solid $primary'
-  },
-
-  'input[type=range]': {
-    accentColor: 'var(--colors-primary)'
+    border: '1px solid $primary',
+    minWidth: 180
   },
 
   'input[type=checkbox]': {
