@@ -21,7 +21,7 @@ const Heart = ({ favorited = false, id }: Props) => {
   const isFav = favorited ? favorited : fav;
 
   const handleClick = () => {
-    if (isFav) {
+    if (isFav === 'true' || isFav === true) {
       dispatch(removeCatFavorited(id))
     } else {
       dispatch(addCatFavorited(id))
