@@ -1,25 +1,36 @@
 'use client';
 
-import { catFavorited } from '@/store/features/list/actions';
+import { favCat } from '@/store/features/detail/slice';
+import { addCatFavorited, removeCatFavorited } from '@/store/features/list/actions';
 import { useAppDispatch } from '@/store/hooks';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import { HeartStyled } from './styles';
 interface Props {
-  favorited: boolean,
+  favorited: boolean | string,
   id: string
 }
 
 const Heart = ({ favorited = false, id }: Props) => {
 
   const dispatch = useAppDispatch();
+  const router = useRouter();
+  const { fav } = router.query;
+
+  const isFav = favorited ? favorited : fav;
 
   const handleClick = () => {
-    !favorited && dispatch(catFavorited(id))
+    if (isFav) {
+      dispatch(removeCatFavorited(id))
+    } else {
+      dispatch(addCatFavorited(id))
+      dispatch(favCat())
+    }
   }
 
   return (
-    <HeartStyled onClick={handleClick} favorited={favorited} />
+    <HeartStyled onClick={handleClick} favorited={isFav} />
   );
 }
 

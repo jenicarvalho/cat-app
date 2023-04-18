@@ -1,7 +1,7 @@
 'use client';
 
 import { createSlice, current } from '@reduxjs/toolkit';
-import { addFavoritedToState, catFavorited, sortCats } from './actions';
+import { addFavoritedToListState, addCatFavorited, removeCatFavorited, sortCats, removeFavoritedToListState } from './actions';
 
 export interface SortState {
 	cats: any[] | any,
@@ -24,18 +24,21 @@ export const catsSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-			builder.addCase(catFavorited.pending, (state: SortState) => {
+			builder.addCase(addCatFavorited.pending, (state: SortState) => {
 				state.status = "loading";
 			});
 			builder.addCase(
-					catFavorited.fulfilled, (state: SortState, action) => {
-						state.cats = addFavoritedToState(state.cats, action.payload)
+					addCatFavorited.fulfilled, (state: SortState, action) => {
+						state.cats = addFavoritedToListState(state.cats, action.payload)
 						state.status = "loaded";
 			});
+			builder.addCase(removeCatFavorited.pending, (state: SortState) => {
+				state.status = "loading";
+			});
 			builder.addCase(
-					catFavorited.rejected, (state: SortState) => {
-						state.status = "failed";
-						
+					removeCatFavorited.fulfilled, (state: SortState, action) => {
+						state.cats = removeFavoritedToListState(state.cats, action.payload)
+						state.status = "loaded";
 			});
 		}    
 })

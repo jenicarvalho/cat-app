@@ -1,6 +1,6 @@
 'use client';
 
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export interface SortState {
 	cat: any,
@@ -15,9 +15,12 @@ export const detailSlice = createSlice({
 	initialState,
 	reducers: {
 		saveCat: (state, action) => { state.cat = action.payload },
+		favCat: (state) => {
+			state.cat = { ...state.cat, favourite: 'true' }
+		}
 	},  
 })
 
-export const { saveCat } = detailSlice.actions;
+export const { saveCat, favCat } = detailSlice.actions;
 
 export default detailSlice.reducer;

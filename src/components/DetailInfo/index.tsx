@@ -2,20 +2,15 @@ import React from 'react';
 import Image from 'next/image';
 import { DetailStyled, Traits, Trait, Flex, LinkStyled } from './styles';
 import { useAppSelector } from '@/store/hooks';
-import { useRouter } from 'next/router';
 import Heart from '../Heart';
 
 const DetailInfo = () => {
 
-  const router = useRouter();
-  const { fav } = router.query;
-
-  const { url, breeds, id } = useAppSelector(state => state.detail.cat);
+  const { url, breeds, id, favourite } = useAppSelector(state => state.detail.cat);
 
   if (!breeds) {
     return
   }
-
 
   return (
     <DetailStyled>
@@ -27,7 +22,7 @@ const DetailInfo = () => {
         <div>
           <h2>
             {breeds.name}
-            <Heart favorited={fav} id={id} />
+            <Heart id={id} favorited={favourite} />
           </h2>
           <p>{breeds.description}</p>
 
