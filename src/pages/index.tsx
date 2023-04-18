@@ -1,15 +1,17 @@
 import axios from 'axios'
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { lazy, Suspense, useEffect } from 'react';
 
-import Card from '@/components/Card';
 import Filter from '@/components/Filter';
 import Container from '@/components/Container';
 import Sort from '@/components/Sort';
 import { save } from '@/store/features/list/slice';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { useEffect } from 'react';
 import { normalizeData } from '@/utils/normalize';
+import Loader from '@/components/Loader';
+
+const Card = lazy(() => import('@/components/Card'));
 
 export default function Home({ cats }: any) {
 
@@ -20,6 +22,12 @@ export default function Home({ cats }: any) {
     const dataNormalized = normalizeData(cats)
     dispatch(save(dataNormalized))
   }, [])
+
+  const showCards = (item) => (
+    <Suspense fallback={<Loader />}>
+      <Card content={item} key={item.id} />
+    </Suspense>
+  )
 
   return (
     <>
@@ -33,10 +41,9 @@ export default function Home({ cats }: any) {
       </Container>
 
       <Container grid>
-
         {catsFiltered.length > 0 ?
-          catsFiltered.map((cat: any) => <Card content={cat} key={cat.id} />) :
-          catsList && catsList.map((cat: any) => <Card content={cat} key={cat.id} />)
+          catsFiltered.map((item: any) => showCards(item)) :
+          catsList && catsList.map((item: any) => showCards(item))
         }
       </Container>
     </>
@@ -44,7 +51,7 @@ export default function Home({ cats }: any) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const query = `&sub_id=cat-app&has_breeds=1&order=asc&limit=200&api_key=${process.env.API_KEY}`;
+  const query = `&sub_id=cat-app&has_breeds=1&order=asc&limit=400&api_key=${process.env.API_KEY}`;
   const response = await axios.get(`${process.env.API_URL}/search?${query}`);
 
   return {
