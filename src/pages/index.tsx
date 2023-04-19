@@ -23,7 +23,7 @@ export default function Home({ cats }: Props) {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const dataNormalized: CatTypeDetail = normalizeData(cats)
+    const dataNormalized = normalizeData(cats)
     dispatch(save(dataNormalized))
   }, [])
 
