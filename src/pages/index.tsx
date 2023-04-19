@@ -10,7 +10,6 @@ import { save } from '@/store/features/list/slice';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { normalizeData } from '@/utils/normalize';
 import Loader from '@/components/Loader';
-
 const Card = lazy(() => import('@/components/Card'));
 
 export default function Home({ cats }: any) {
@@ -34,6 +33,10 @@ export default function Home({ cats }: any) {
       <Head>
         <title>Cat App</title>
       </Head>
+
+      <h1>
+        Welcome to <a href="https://nextjs.org">Next.js!</a>
+      </h1>
 
       <Container plain>
         <Filter />

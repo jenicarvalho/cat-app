@@ -3,20 +3,19 @@
 import { createSlice, current } from '@reduxjs/toolkit';
 import { addFavoritedToListState, filterCats, filterFavCats, removeFavoritedToListState, sortCats } from './actions';
 import { addCatFavorited, removeCatFavorited } from './thunks';
-
-export interface SortState {
+export interface ListState {
 	cats: any[] | any,
 	catsFiltered: any[],
 	status?: string
 };
 
-const initialState: SortState = {
+const initialState: ListState = {
 	cats: [],
 	catsFiltered: [],
 	status: ''
 };
 
-const getState = (state) => {
+export const getState = (state) => {
 	const cats = [...current(state.cats)];
 	const catsFiltered = [...current(state.catsFiltered)];
 	return catsFiltered.length > 0 ? catsFiltered : cats;
@@ -46,12 +45,12 @@ export const catsSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 			builder.addCase(
-					addCatFavorited.fulfilled, (state: SortState, action) => {
+					addCatFavorited.fulfilled, (state: ListState, action) => {
 						state.cats = addFavoritedToListState(state.cats, action.payload)
 						state.status = "loaded";
 			});
 			builder.addCase(
-					removeCatFavorited.fulfilled, (state: SortState, action) => {
+					removeCatFavorited.fulfilled, (state: ListState, action) => {
 						state.cats = removeFavoritedToListState(state.cats, action.payload)
 						state.status = "loaded";
 			});
