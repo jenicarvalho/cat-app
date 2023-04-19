@@ -34,10 +34,6 @@ export default function Home({ cats }: any) {
         <title>Cat App</title>
       </Head>
 
-      <h1>
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
-
       <Container plain>
         <Filter />
         <Sort />
