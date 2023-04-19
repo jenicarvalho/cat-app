@@ -13,12 +13,24 @@ const catMock = {
 
 describe('Detail Reducer', () => {
   const initialState: DetailState = {
-    cat: {},
+    cat: {
+      breeds: [],
+      id: '',
+      url: '',
+      width: 0,
+      height: 0,
+    },
   };
 
   it('should handle initial state', () => {
     expect(detailReducer(undefined, { type: 'unknown' })).toEqual({
-      cat: {},
+      cat: {
+        breeds: [],
+        id: '',
+        url: '',
+        width: 0,
+        height: 0,
+      },
     });
   });
 
