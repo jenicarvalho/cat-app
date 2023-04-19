@@ -46,7 +46,8 @@ export const catsSlice = createSlice({
 	extraReducers: (builder) => {
 			builder.addCase(
 					addCatFavorited.fulfilled, (state: ListState, action) => {
-						state.cats = addFavoritedToListState(state.cats, action.payload)
+						state.cats = addFavoritedToListState(state.cats, action.payload);
+						state.catsFiltered = addFavoritedToListState(state.catsFiltered, action.payload);
 						state.status = "loaded";
 			});
 			builder.addCase(

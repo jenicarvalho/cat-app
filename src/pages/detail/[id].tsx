@@ -32,8 +32,8 @@ export default function Detail({ cat }: any) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
-  // it doesnt not retorn fav :(
-  const response = await axios.get(`${process.env.API_URL}/${context.query.id}?sub_id=cat-app&include_favourite=1`);
+  // it doesnt not return fav thats why the ?fav=bool
+  const response = await axios.get(`https://api.thecatapi.com/v1/images/${context.query.id}?sub_id=cat-app2&include_favourite=1`);
 
   return {
     props: {

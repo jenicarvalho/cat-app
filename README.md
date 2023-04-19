@@ -4,7 +4,6 @@ This is the Cat App Built on the top on  [Next.js](https://nextjs.org/) using th
 First, create an `.env` file and add the following:
 ``` 
 API_KEY={your api key}
-API_URL=https://api.thecatapi.com/v1/images
 ```
 
 **You must use node version >=16**

@@ -8,7 +8,7 @@ import { useAppDispatch } from '@/store/hooks';
 
 import { HeartStyled } from './styles';
 interface Props {
-  favorited: boolean | string,
+  favorited: any,
   id: string
 }
 
@@ -19,6 +19,7 @@ const Heart = ({ favorited = false, id }: Props) => {
   const { fav } = router.query;
 
   const isFav = favorited ? favorited : fav;
+
 
   const handleClick = () => {
     if (isFav === 'true' || isFav === true) {

@@ -9,7 +9,7 @@ export const addCatFavorited = createAsyncThunk(
 		try {
 			const url = 'https://api.thecatapi.com/v1/favourites'
 			await axios.post(url, 
-					{ image_id: id, sub_id: 'cat-app' },
+					{ image_id: id, sub_id: 'cat-app2' },
 					{ headers: {'x-api-key': 'live_soU1pvzkkB27t1iGJvPjwiE4Ue5THViNRwPnXJlTjzGAc9jpSWrm9J3O61h8Xuqa'}}
 				);
 			

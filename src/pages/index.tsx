@@ -10,7 +10,7 @@ import { save } from '@/store/features/list/slice';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { normalizeData } from '@/utils/normalize';
 import Loader from '@/components/Loader';
-const Card = lazy(() => import('@/components/Card'));
+const Card = lazy(() => import('../components/Card'));
 
 export default function Home({ cats }: any) {
 
@@ -23,8 +23,8 @@ export default function Home({ cats }: any) {
   }, [])
 
   const showCards = (item) => (
-    <Suspense fallback={<Loader />}>
-      <Card content={item} key={item.id} />
+    <Suspense fallback={<Loader />} key={item.id}>
+      <Card content={item} />
     </Suspense>
   )
 
@@ -50,8 +50,7 @@ export default function Home({ cats }: any) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const query = `&sub_id=cat-app&has_breeds=1&order=asc&limit=400&api_key=${process.env.API_KEY}`;
-  const response = await axios.get(`${process.env.API_URL}/search?${query}`);
+  const response = await axios.get(`https://api.thecatapi.com/v1/images/search?&sub_id=cat-app2&has_breeds=1&order=asc&limit=400&api_key=live_soU1pvzkkB27t1iGJvPjwiE4Ue5THViNRwPnXJlTjzGAc9jpSWrm9J3O61h8Xuqa`);
 
   return {
     props: {

@@ -30,28 +30,28 @@ const Filter = () => {
         <label htmlFor='breed'>Select Breed</label>
         <select name='breed' id='breed' onChange={(e) => change('breed', e.target.value, true)}>
           <option>select</option>
-          {breeds.map(item => <option value={item[0]} key={item}>{item[0]}</option>)}
+          {breeds.map(item => <option value={item[0]} key={item[0]}>{item[0]}</option>)}
         </select>
       </Item>
       <Item>
         <label htmlFor='origin'>Select Origin</label>
         <select name='origin' id='origin' onChange={(e) => change('origin', e.target.value)}>
           <option>select</option>
-          {origin.map(item => <option value={item[0]} key={item}>{item[0]}</option>)}
+          {origin.map(item => <option value={item[0]} key={item[0]}>{item[0]}</option>)}
         </select>
       </Item>
       <Item>
         <label htmlFor='weight'>Select weight</label>
         <select name='weight' id='weight' onChange={(e) => change('weight', e.target.value)}>
           <option>select</option>
-          {weight.map(item => <option value={item[0]} key={item}>{item[0]}</option>)}
+          {weight.map(item => <option value={item[0]} key={item[0]}>{item[0]}</option>)}
         </select>
       </Item>
       <Item>
         <label htmlFor='lifespan'>Select Lifespan</label>
         <select name='lifespan' id='lifespan' onChange={(e) => change('life_span', e.target.value)}>
           <option>select</option>
-          {lifespan.map(item => <option value={item[0]} key={item}>{item[0]}</option>)}
+          {lifespan.map(item => <option value={item[0]} key={item[0]}>{item[0]}</option>)}
         </select>
       </Item>
       <Item>
