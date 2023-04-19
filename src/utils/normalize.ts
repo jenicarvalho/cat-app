@@ -1,6 +1,6 @@
 export const normalizeData = (data) => {
   return data?.map((item: any) => {
-    const [breed] = item.breeds;
+    const breed = item.breeds;
     return {
       ...item,
       breeds: {

@@ -1,11 +1,12 @@
 'use client';
 
+import { CatTypes } from '@/types';
 import { createSlice, current } from '@reduxjs/toolkit';
 import { addFavoritedToListState, filterCats, filterFavCats, removeFavoritedToListState, sortCats } from './actions';
 import { addCatFavorited, removeCatFavorited } from './thunks';
 export interface ListState {
-	cats: any[] | any,
-	catsFiltered: any[],
+	cats: CatTypes[],
+	catsFiltered: CatTypes[],
 	status?: string
 };
 

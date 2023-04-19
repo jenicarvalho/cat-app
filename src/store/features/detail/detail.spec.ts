@@ -1,4 +1,4 @@
-import detailReducer, { SortState, saveCat, favCat } from './slice';
+import detailReducer, { DetailState, saveCat, favCat } from './slice';
 
 const catMock = {
   id: 'EHG3sOpAM',
@@ -12,7 +12,7 @@ const catMock = {
 }
 
 describe('Detail Reducer', () => {
-  const initialState: SortState = {
+  const initialState: DetailState = {
     cat: {},
   };
 

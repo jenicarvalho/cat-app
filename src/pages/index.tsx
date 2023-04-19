@@ -10,19 +10,24 @@ import { save } from '@/store/features/list/slice';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { normalizeData } from '@/utils/normalize';
 import Loader from '@/components/Loader';
+import { CatTypeDetail, CatTypes } from '@/types';
 const Card = lazy(() => import('../components/Card'));
 
-export default function Home({ cats }: any) {
+type Props = {
+  cats: CatTypes
+}
+
+export default function Home({ cats }: Props) {
 
   const { cats: catsList, catsFiltered } = useAppSelector(state => state.list);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const dataNormalized = normalizeData(cats)
+    const dataNormalized: CatTypeDetail = normalizeData(cats)
     dispatch(save(dataNormalized))
   }, [])
 
-  const showCards = (item) => (
+  const showCards = (item: CatTypeDetail) => (
     <Suspense fallback={<Loader />} key={item.id}>
       <Card content={item} />
     </Suspense>

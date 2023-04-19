@@ -7,8 +7,13 @@ import axios from 'axios';
 import { useAppDispatch } from '@/store/hooks';
 import { normalizeData } from '@/utils/normalize';
 import { saveCat } from '@/store/features/detail/slice';
+import { CatTypes } from '@/types';
 
-export default function Detail({ cat }: any) {
+type Props = {
+  cat: CatTypes
+}
+
+export default function Detail({ cat }: Props) {
 
   const dispatch = useAppDispatch();
 

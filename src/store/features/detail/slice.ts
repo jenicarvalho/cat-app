@@ -1,13 +1,20 @@
 'use client';
 
+import { CatTypeDetail } from '@/types';
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface SortState {
-	cat: any,
+export interface DetailState {
+	cat: CatTypeDetail | any,
 };
 
-const initialState: SortState = {
-	cat: {},
+const initialState: DetailState = {
+	cat: {
+		breeds: [],
+		id: '',
+		url: '',
+		width: 0,
+		height: 0,
+	},
 };
 
 export const detailSlice = createSlice({

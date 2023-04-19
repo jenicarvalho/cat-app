@@ -1,7 +1,9 @@
 'use client';
 
+import { CatTypeDetail } from "@/types";
+
 export const addFavoritedToListState = (state, id) => {
-	return state.map((item: any) => {
+	return state.map((item: CatTypeDetail) => {
 		return item.id === id ? { ...item, favourite: 'true' } : { ...item }
 	})
 }

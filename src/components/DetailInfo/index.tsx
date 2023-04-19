@@ -9,7 +9,7 @@ const DetailInfo = () => {
   const { url, breeds, id, favourite } = useAppSelector(state => state.detail.cat);
 
   if (!breeds) {
-    return
+    return <></>
   }
 
   return (

@@ -1,8 +1,14 @@
+import { CatTypeDetail } from '@/types';
 import Image from 'next/image';
 import Heart from '../Heart';
 import { CardStyled, Breed, Overlay, Info } from './styles';
 
-const Card = ({ content }) => {
+type Props = {
+  content: CatTypeDetail,
+}
+
+const Card = ({ content }: Props) => {
+
   const { url, breeds, id } = content;
   const { name, origin, life_span, weight } = breeds;
 
